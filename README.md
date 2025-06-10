@@ -1,0 +1,1 @@
+# vkcontest2025go
