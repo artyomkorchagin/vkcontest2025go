@@ -48,12 +48,11 @@ func (wp *WorkerPool) AddWorker() {
 		for {
 			select {
 			case data := <-w.inputCh:
-				fmt.Printf("Воркер №%d обрабатывает таску №%s\n", w.id, data)
+				fmt.Printf("Воркер %d обрабатывает таску %s\n", w.id, data)
 				time.Sleep(5 * time.Second)
-				fmt.Printf("Воркер %d закончил с таском №%s\n", w.id, data)
+				fmt.Printf("Воркер %d закончил с таском %s\n", w.id, data)
 				go wp.addTask(w)
 			case <-w.stopCh:
-				fmt.Printf("Удаляется воркер №%d\n", w.id)
 				return
 			}
 		}

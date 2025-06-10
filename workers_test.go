@@ -61,8 +61,8 @@ func TestAsyncProcessing(t *testing.T) {
 	wp := NewWorkerPool()
 	wp.AddWorker()
 
-	taskID := "42"
-	wp.SendData(taskID)
+	taskData := "42"
+	wp.SendData(taskData)
 
 	time.Sleep(6 * time.Second)
 
@@ -74,8 +74,8 @@ func TestAsyncProcessing(t *testing.T) {
 	}
 	out := buf.String()
 
-	startMsg := "Воркер 0 обрабатывает таску №" + taskID
-	finishMsg := "Воркер 0 закончил с таском №" + taskID
+	startMsg := "Воркер 0 обрабатывает таску " + taskData
+	finishMsg := "Воркер 0 закончил с таском " + taskData
 
 	if !strings.Contains(out, startMsg) {
 		t.Errorf("ожидали %q, но его нет в выводе:\n%s", startMsg, out)
